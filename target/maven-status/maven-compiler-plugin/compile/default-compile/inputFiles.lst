@@ -1,0 +1,17 @@
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/controllers/ThemesController.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/JAXRSConfiguration.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/dao/Dao.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/dao/DaoTag.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/controllers/EntranceServlet.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/controllers/HomeController.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/beans/News.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/dao/DaoTheme.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/utils/ConnexionFactory.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/beans/Tag.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/beans/Theme.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/controllers/NewsController.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/controllers/SearchServlet.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/controllers/ZoomController.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/resources/JavaEE8Resource.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/dao/DaoNews.java
+/Users/admin/DEV/workspace/java/afpa_cda/src/main/java/com/philou/afpa_cda/controllers/TagsController.java
