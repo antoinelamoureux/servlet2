@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.9.3
 -- https://www.phpmyadmin.net/
 --
@@ -176,3 +176,14 @@ ALTER TABLE `news_tags`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE `users` (
+  `id_user` int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `lastname` varchar(30) NOT NULL,
+  `firstname` varchar(30) NOT NULL,
+  `adresse` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` BINARY(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+

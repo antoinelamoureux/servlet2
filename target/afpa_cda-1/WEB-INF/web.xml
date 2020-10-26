@@ -5,15 +5,15 @@
         <servlet-class>com.philou.afpa_cda.controllers.EntranceServlet</servlet-class>
         <init-param>
             <param-name>user</param-name>
-            <param-value>root</param-value>
+            <param-value>admin</param-value>
         </init-param>
         <init-param>
             <param-name>pass</param-name>
-            <param-value>root</param-value>
+            <param-value>admin</param-value>
         </init-param>
         <init-param>
             <param-name>url</param-name>
-            <param-value>jdbc:mysql://localhost:8889/news_system?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</param-value>
+            <param-value>jdbc:mysql://localhost:3306/news_system?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</param-value>
         </init-param>
         <init-param>
             <param-name>driver</param-name>

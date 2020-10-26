@@ -16,10 +16,10 @@
             <jsp:include page="../navigation.jsp"/>
 
         <div id="main">
-            <form action="users" method="post">
+            <form action="login" method="post">
                 <input type="hidden" name="action" value="login"/>
                 <input type="text" name="username" placeholder="Votre identifiant"/><br>
-                <input type="password" name="password" placeholder="Votre mot de passe"/><br>
+                <input type="text" name="password" placeholder="Votre mot de passe"/><br>
                 <input style="width:150px" type="submit" name="submit">
             </form>
         </div>

@@ -49,6 +49,10 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (request.getSession().getAttribute("user") == null) {
+            request.getRequestDispatcher("users/login.jsp").forward(request, response);
+        }
+        
         cnx = (Connection)getServletContext().getAttribute("connexion");
         daoNews = new DaoNews(cnx); 
         daoTags = new DaoTag(cnx);

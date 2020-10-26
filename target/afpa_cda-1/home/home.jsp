@@ -18,6 +18,11 @@
         
         <div id="main">
             <h3>Home</h3>
+             <c:if test="${sessionScope.user == true}">
+                 <div text-align="center">
+                     <p>Bienvenue ${sessionScope.user.firstName} ${sessionScope.user.lastName}</p>
+                 </div>
+            </c:if> 
             <p class="nouvel-item"><a href="news?action=1"><img src="MEDIAS/ICO_NEW.png" width="100" /></a></p>
             <table>
             <caption>liste des news</caption>
