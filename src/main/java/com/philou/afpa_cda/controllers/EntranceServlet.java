@@ -70,7 +70,7 @@ public class EntranceServlet extends HttpServlet {
         System.out.println("EntranceServlet::DOGET");
         
         // On FORWARD la requète http (ON LA POUSSE UN PEU PLUS LOIN)
-       request.getRequestDispatcher("home").forward(request, response);
+       request.getRequestDispatcher("/home").forward(request, response);
     }
 
 //------------------------------------------------------------------------
@@ -80,7 +80,7 @@ public class EntranceServlet extends HttpServlet {
             throws ServletException, IOException {
         
         System.out.println("EntranceServlet::DOPOST");
-        
+      
     }
 
     /**

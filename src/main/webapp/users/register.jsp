@@ -19,7 +19,7 @@
             <form action="register" method="post">
                 <input type="hidden" name="action" value="login"/>
                 <input type="text" name="lastname" placeholder="Votre nom"/><br>
-                <input type="text" name="fistname" placeholder="Votre prénom"/><br>
+                <input type="text" name="firstname" placeholder="Votre prénom"/><br>
                 <input type="text" name="adresse" placeholder="Votre adrèsse"/><br>
                 <input type="text" name="email" placeholder="Votre email"/><br>
                 <input type="text" name="username" placeholder="Votre identifiant"/><br>

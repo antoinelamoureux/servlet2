@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author admin
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/login"})
+@WebServlet(urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
     private Connection cnx;
     private DaoUser daoUser;
@@ -30,11 +30,14 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getRequestDispatcher("users/login.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        cnx = (Connection)getServletContext().getAttribute("connexion");
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -46,11 +49,11 @@ public class LoginController extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            
-            view = "home";
+            System.out.println(user.getFirstName());
+            view = "/home/home.jsp";
         } else { 
             String message = "Invalid username or password";
-            request.setAttribute("meassage", message);
+            request.setAttribute("message", message);
             
             view = "users/error.jsp";
         }

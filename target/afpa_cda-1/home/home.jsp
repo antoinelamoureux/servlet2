@@ -18,7 +18,7 @@
         
         <div id="main">
             <h3>Home</h3>
-             <c:if test="${sessionScope.user == true}">
+             <c:if test="${sessionScope.user != null}}">
                  <div text-align="center">
                      <p>Bienvenue ${sessionScope.user.firstName} ${sessionScope.user.lastName}</p>
                  </div>

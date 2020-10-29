@@ -79,6 +79,7 @@ public class DaoUser implements Dao<User> {
         User user = new User();
 
         String sql = "SELECT * FROM users WHERE username = ? and password = ?";
+        System.out.println(cnx);
         try (
                 PreparedStatement ps = cnx.prepareStatement(sql);) {
 

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class NewsController extends HttpServlet {
     //
     private Connection cnx;
-    private List<News> liste;
+        private List<News> liste;
     private List<Tag> allTags;
     private List<Tag> listeTagsForZeNews;
     List<Theme> allThemes;

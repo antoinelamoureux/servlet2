@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 77011-53-17
  */
-@WebServlet(name = "RegisterController", urlPatterns = {"/register"})
+@WebServlet(urlPatterns = {"/register"})
 public class RegisterController extends HttpServlet {
     private Connection cnx;
     private DaoUser daoUser;
@@ -36,12 +36,14 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {  
-        request.getRequestDispatcher("login/register.jsp").forward(request, response);
+        request.getRequestDispatcher("users/register.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        cnx = (Connection)getServletContext().getAttribute("connexion");
+        
         String lastName = request.getParameter("lastname");
         String firstName = request.getParameter("firstname");
         String adresse = request.getParameter("adresse");
@@ -62,7 +64,7 @@ public class RegisterController extends HttpServlet {
         daoUser = new DaoUser(cnx);
         daoUser.insert(user);
         
-        request.getRequestDispatcher("login").forward(request, response);
+        request.getRequestDispatcher("users/login.jsp").forward(request, response);
     }
 
     public String hashPassword(String password) {
