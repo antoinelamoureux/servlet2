@@ -6,11 +6,19 @@
 package com.philou.afpa_cda.dao;
 
 import com.philou.afpa_cda.beans.User;
+import com.philou.afpa_cda.controllers.RegisterController;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 
 /**
  *
@@ -74,7 +82,41 @@ public class DaoUser implements Dao<User> {
     public long count() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    private String findPassword(String username) {
+        String password = "";
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
+        String sql = "SELECT users.password FROM users WHERE username=?";
+
+        try{
+            ps = cnx.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+
+            while(rs.next()) {
+                password = rs.getString("password");
+            }		
+        } 
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        finally {
+            if(ps != null | rs != null) {
+            try {
+                ps.close();
+                rs.close();
+            }
+            catch(SQLException e) {
+            System.out.println(e.getMessage());	                        
+            }
+            }
+        }
+    return password;
+}
+        
     public User checkLogin(String username, String password) {
         User user = new User();
 
@@ -82,10 +124,17 @@ public class DaoUser implements Dao<User> {
         System.out.println(cnx);
         try (
                 PreparedStatement ps = cnx.prepareStatement(sql);) {
-
-            // On valorise l'attribut de requète SQL
+            
+            String passwordHash = findPassword(username);
+            
+            try {
+                IsValidPassword(password, passwordHash);
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
+                Logger.getLogger(DaoUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             ps.setString(1, username);
-            ps.setString(2, password);
+            ps.setString(2, passwordHash);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -103,6 +152,26 @@ public class DaoUser implements Dao<User> {
         }
         return user;
 
+    }
+
+    private boolean IsValidPassword(String password, String passwordHash) throws NoSuchAlgorithmException, InvalidKeySpecException
+    {
+        String newHash = "";
+        byte[] salt = new byte[16];
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+        try {
+            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            byte[] hash = factory.generateSecret(spec).getEncoded();
+            newHash  = new String (hash);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
+            Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Compute the hash of the provided password, using the same salt, 
+        // iteration count, and hash length
+  
+        // Compare the hashes in constant time. The password is correct if
+        // both hashes match.
+        return newHash.equals(passwordHash);
     }
 
 }

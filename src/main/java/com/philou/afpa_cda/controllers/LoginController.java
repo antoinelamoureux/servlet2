@@ -43,14 +43,15 @@ public class LoginController extends HttpServlet {
 
         daoUser = new DaoUser(cnx);
         user = daoUser.checkLogin(username, password);
+        System.out.println(user);
         
         String view = "";
         
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            System.out.println(user.getFirstName());
-            view = "/home/home.jsp";
+
+            view = "users/user.jsp";
         } else { 
             String message = "Invalid username or password";
             request.setAttribute("message", message);
